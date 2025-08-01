@@ -27,6 +27,9 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -54,6 +57,7 @@ android {
         implementation(libs.room.runtime)
         implementation(libs.room.ktx)
         implementation(libs.androidx.appcompat)
+        implementation(libs.material)
         kapt(libs.room.compiler)
 
         // Hilt
@@ -64,6 +68,8 @@ android {
 
         // UI
         implementation(libs.glide)
+        implementation(libs.lottie)
+        implementation(libs.constraintlayout)
 
         // Debugging
         debugImplementation(libs.okhttp.chucker)

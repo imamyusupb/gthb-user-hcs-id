@@ -23,6 +23,11 @@ moshi = "1.15.1"
 glide = "4.16.0"
 constraintlayout = "2.1.4"
 
+# Animation
+lottie = "6.4.0"
+
+
+
 # Test
 junit = "4.13.2"
 espresso = "3.5.1"
@@ -31,6 +36,7 @@ androidxTest = "1.5.0"
 # WorkManager
 work = "2.9.0"
 appcompat = "1.7.1"
+material = "1.12.0"
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -69,6 +75,8 @@ moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.re
 # UI
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+
 
 # Debugging
 okhttp-chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
@@ -79,3 +87,4 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidxTest" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
