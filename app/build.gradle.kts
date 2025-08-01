@@ -2,6 +2,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlinKapt)
+
 }
 
 android {
@@ -33,13 +36,39 @@ android {
     }
 }
 
-dependencies {
+    dependencies {
+        implementation(libs.core.ktx)
+        implementation(libs.lifecycle.viewmodel)
+        implementation(libs.lifecycle.livedata)
+        implementation(libs.coroutines.core)
+        implementation(libs.coroutines.android)
 
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
-}
+        // Network
+        implementation(libs.retrofit)
+        implementation(libs.retrofit.moshi)
+        implementation(libs.okhttp.logging)
+        implementation(libs.moshi)
+        implementation(libs.moshi.kotlin)
+
+        // Room
+        implementation(libs.room.runtime)
+        implementation(libs.room.ktx)
+        implementation(libs.androidx.appcompat)
+        kapt(libs.room.compiler)
+
+        // Hilt
+        implementation(libs.hilt.android)
+        kapt(libs.hilt.compiler)
+        // WorkManager
+        implementation(libs.work.runtime)
+
+        // UI
+        implementation(libs.glide)
+
+        // Debugging
+        debugImplementation(libs.okhttp.chucker)
+        releaseImplementation(libs.okhttp.chuckerNoop)
+        // Test
+        testImplementation(libs.junit)
+        androidTestImplementation(libs.espresso.core)
+    }
