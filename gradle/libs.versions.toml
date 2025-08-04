@@ -1,0 +1,110 @@
+[versions]
+# Android & Kotlin
+compileSdk = "34"
+minSdk = "24"
+targetSdk = "34"
+kotlin = "2.0.21"
+agp = "8.2.2"
+chucker = "4.0.0"
+sqlcipher = "4.5.4"
+sqlite = "2.3.1"
+
+activity = "1.9.0"
+fragment = "1.7.1"
+
+shimmer = "0.5.0"
+
+
+# Jetpack & Coroutine
+coroutines = "1.7.3"
+lifecycle = "2.6.2"
+room = "2.6.1"
+hilt = "2.51.1"
+navigation = "2.7.7"
+preference = "1.2.1"
+
+# Network
+retrofit = "2.9.0"
+okhttp = "4.12.0"
+moshi = "1.15.1"
+retrofit-coroutines = "0.9.2"
+
+# UI
+glide = "4.16.0"
+constraintlayout = "2.1.4"
+
+# Animation
+lottie = "6.4.0"
+
+
+
+# Test
+junit = "4.13.2"
+espresso = "3.5.1"
+androidxTest = "1.5.0"
+
+# WorkManager
+work = "2.9.0"
+appcompat = "1.7.1"
+material = "1.12.0"
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+[libraries]
+# Jetpack
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
+core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.12.0" }
+lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
+work-runtime = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work" }
+
+# Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+
+# Coroutine
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+retrofit-coroutines = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlin-coroutines-adapter", version.ref = "retrofit-coroutines" }
+
+
+# Network
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-moshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
+moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
+
+# UI
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
+facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
+
+
+# SQLCipher & SQLite
+sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "sqlcipher" }
+sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
+
+# Debugging
+okhttp-chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
+okhttp-chuckerNoop = { group = "com.github.chuckerteam.chucker", name = "library-no-op", version.ref = "chucker" }
+
+# Test
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidxTest" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }

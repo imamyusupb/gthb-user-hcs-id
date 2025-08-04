@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="16dp"
+    android:background="@android:color/white"
+    tools:context=".search.MainActivity">
+
+    <!-- Search View -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="8dp">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/sv_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search some user" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Empty state (default: visible) -->
+    <include
+        android:id="@+id/base_empty"
+        layout="@layout/base_empty_user"
+        android:visibility="visible" />
+
+    <!-- Loading state (default: gone) -->
+    <include
+        android:id="@+id/baseLoading"
+        layout="@layout/base_loading_main"
+        android:visibility="gone" />
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_user"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:layoutAnimation="@anim/layout_animation"
+        tools:listitem="@layout/item_row_user" />
+
+</LinearLayout>
