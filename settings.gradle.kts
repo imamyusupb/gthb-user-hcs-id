@@ -15,5 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Gitme Show !"
 include(":app")
-include(":data")
-include(":domain")
+include(":core")

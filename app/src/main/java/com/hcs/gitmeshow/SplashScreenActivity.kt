@@ -8,6 +8,7 @@ import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.hcs.gitmeshow.databinding.ActivitySplashScreenBinding
+import com.hcs.gitmeshow.search.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {

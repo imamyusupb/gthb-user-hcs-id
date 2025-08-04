@@ -45,6 +45,8 @@ android {
         implementation(libs.lifecycle.livedata)
         implementation(libs.coroutines.core)
         implementation(libs.coroutines.android)
+        implementation(libs.androidx.activity.ktx)
+        implementation(libs.androidx.fragment.ktx)
 
         // Network
         implementation(libs.retrofit)
@@ -63,13 +65,16 @@ android {
         // Hilt
         implementation(libs.hilt.android)
         kapt(libs.hilt.compiler)
+
         // WorkManager
         implementation(libs.work.runtime)
 
         // UI
         implementation(libs.glide)
         implementation(libs.lottie)
+        implementation(libs.androidx.preference)
         implementation(libs.constraintlayout)
+        implementation(libs.facebook.shimmer)
 
         // Debugging
         debugImplementation(libs.okhttp.chucker)
@@ -77,4 +82,6 @@ android {
         // Test
         testImplementation(libs.junit)
         androidTestImplementation(libs.espresso.core)
+        implementation(project(":core"))
+        //        implementation(project(":data"))
     }
