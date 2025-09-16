@@ -1,5 +1,6 @@
 package com.hcs.di
 
+import com.hcs.core.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module

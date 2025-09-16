@@ -1,4 +1,15 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+
+val localProperties = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) load(FileInputStream(file))
+}
+
+val githubToken: String = localProperties.getProperty("GITHUB_TOKEN") ?: ""
+
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
@@ -15,11 +26,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-            buildConfigField(
-                "String",
-                "GITHUB_TOKEN",
-                "\"${project.findProperty("GITHUB_TOKEN") ?: ""}\""
-            )
+        buildConfigField(
+            "String",
+            "GITHUB_TOKEN",
+            "\"$githubToken\""
+        )
     }
 
     buildFeatures {
