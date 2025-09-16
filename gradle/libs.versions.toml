@@ -31,6 +31,8 @@ retrofit-coroutines = "0.9.2"
 # Debugging
 chucker = "4.0.0"
 com-google-android-material-material = "1.13.0"
+navigation-fragment-ktx = "2.9.4"
+navigation-ui-ktx = "2.9.4"
 
 
 [libraries]
@@ -61,10 +63,17 @@ okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor",
 moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
 moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
 
+#
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
+
 # Debugging
 okhttp-chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
 okhttp-chuckerNoop = { group = "com.github.chuckerteam.chucker", name = "library-no-op", version.ref = "chucker" }
 com-google-android-material-material = { group = "com.google.android.material", name = "material", version.ref = "com-google-android-material-material" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation-fragment-ktx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation-ui-ktx" }
 
 
 [plugins]

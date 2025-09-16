@@ -49,6 +49,9 @@ dependencies {
     //    #DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    // #Navigation
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
     // #NETWORKING
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi)
@@ -60,4 +63,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    // #LifeCycle
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.livedata.ktx)
 }
