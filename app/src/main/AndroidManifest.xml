@@ -12,9 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindMeDev"
         tools:targetApi="31">
+<!--        <activity-->
+<!--            android:name=".presentation.SplashScreenActivity2"-->
+<!--            android:exported="false" />-->
+        <activity android:name=".MainActivity" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".presentation.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/Base.Theme.FindMeDev"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
