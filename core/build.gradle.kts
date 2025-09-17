@@ -68,6 +68,8 @@ dependencies {
     implementation(libs.moshi.kotlin)
     implementation(libs.retrofit.coroutines)
     testImplementation(libs.junit)
+    debugImplementation(libs.okhttp.chucker)
+    releaseImplementation(libs.okhttp.chuckerNoop)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.javapoet)
