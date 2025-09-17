@@ -7,8 +7,13 @@
 
     <fragment
         android:id="@+id/onboardFragment"
+        tools:layout="@layout/fragment_onboard"
         android:name="com.hcs.findmedev.presentation.onboard.OnboardFragment"
-        android:label="OnboardFragment" />
+        android:label="OnboardFragment" >
+        <action
+            android:id="@+id/action_onboardFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailUserFragment"
         android:name="com.hcs.findmedev.presentation.detail.DetailUserFragment"
@@ -18,5 +23,18 @@
         android:id="@+id/searchUserFragment"
         android:name="com.hcs.findmedev.presentation.search.SearchUserFragment"
         android:label="fragment_search_user"
-        tools:layout="@layout/fragment_search_user" />
+        tools:layout="@layout/fragment_search_user" >
+        <action
+            android:id="@+id/action_searchUserFragment_to_detailUserFragment"
+            app:destination="@id/detailUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        tools:layout="@layout/fragment_home"
+        android:name="com.hcs.findmedev.presentation.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchUserFragment"
+            app:destination="@id/searchUserFragment" />
+    </fragment>
 </navigation>

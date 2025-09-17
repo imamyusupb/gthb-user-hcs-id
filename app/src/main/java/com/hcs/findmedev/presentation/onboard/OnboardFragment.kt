@@ -2,14 +2,14 @@ package com.hcs.findmedev.presentation.onboard
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.hcs.findmedev.databinding.FragmentOnboardBinding
 import com.hcs.core.R
+import com.hcs.findmedev.databinding.FragmentOnboardBinding
 
 
 class OnboardFragment : Fragment() {
@@ -33,18 +33,30 @@ class OnboardFragment : Fragment() {
         val items = setDataOnboard()
         adapter = OnboardingAdapter(items)
         binding.apply {
+            val prefs = requireContext().getSharedPreferences("onboard_prefs", Context.MODE_PRIVATE)
+            val finished = prefs.getBoolean("onboard_finished", false)
+
+            if (finished) {
+                findNavController().navigate(com.hcs.findmedev.R.id.action_onboardFragment_to_homeFragment)
+                return
+            }
+            progressIndicator.isIndeterminate = true
             onboardingViewPager.adapter = adapter
             dotsIndicator.setViewPager2(binding.onboardingViewPager)
             onboardingViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
+                    buttonNext.visibility = if (position == items.lastIndex) View.VISIBLE else View.GONE
+                    buttonNext.setOnClickListener {
+                        binding.loadingOverlay.visibility = View.VISIBLE
 
-                    binding.buttonNext.visibility =
-                        if (position == items.lastIndex) View.VISIBLE else View.GONE
+                        view.postDelayed({
+                            saveOnboardingFinished()
+                            navigateToHome()
+                        }, 2000)
+                    }
                 }
             })
-
-
         }
     }
 
@@ -74,7 +86,7 @@ class OnboardFragment : Fragment() {
     }
 
     private fun navigateToHome() {
-        Toast.makeText(requireContext(), "Onboarding Finished!", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(com.hcs.findmedev.R.id.action_onboardFragment_to_homeFragment)
     }
 
     override fun onDestroyView() {
