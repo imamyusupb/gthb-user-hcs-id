@@ -2,4 +2,5 @@
     <string name="desc_onboard_porto">Showcase your projects and build a professional portfolio directly on GitHub. Organize your repositories, pin your best work, and make your profile stand out to recruiters, clients, or collaborators. Your GitHub profile can become your live resume for the tech world.</string>
     <string name="desc_onboard_collab">Work together with developers from all over the world. Contribute to open-source projects, review pull requests, and share ideas through issues and discussions. GitHub makes it easy to collaborate, manage code versions, and grow your teamwork skills.</string>
     <string name="desc_onboard_learning">Explore millions of public repositories to learn new coding techniques and best practices. Fork projects, read source code, and stay up-to-date with the latest tools and frameworks. GitHub is one of the best places to keep improving your skills as a developer.</string>
+    <string name="start">Start</string>
 </resources>
