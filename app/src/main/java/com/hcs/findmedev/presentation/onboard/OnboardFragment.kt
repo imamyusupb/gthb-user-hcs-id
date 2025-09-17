@@ -32,34 +32,36 @@ class OnboardFragment : Fragment() {
 
         val items = setDataOnboard()
         adapter = OnboardingAdapter(items)
-        binding.onboardingViewPager.adapter = adapter
+        binding.apply {
+            onboardingViewPager.adapter = adapter
+            dotsIndicator.setViewPager2(binding.onboardingViewPager)
+            onboardingViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
 
-        binding.onboardingViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
+                    binding.buttonNext.visibility =
+                        if (position == items.lastIndex) View.VISIBLE else View.GONE
+                }
+            })
 
-                binding.buttonNext.visibility =
-                    if (position == items.lastIndex) View.VISIBLE else View.GONE
-            }
-        })
 
-        binding.buttonNext.setOnClickListener {
-            saveOnboardingFinished()
-            navigateToHome()
         }
     }
 
     private fun setDataOnboard(): List<OnboardingItem> {
         return listOf(
             OnboardingItem(
+                title = "Portfolio",
                 description = getString(R.string.desc_onboard_porto),
                 imageRes = R.drawable.img_board_porto
             ),
             OnboardingItem(
+                title = "Collaboration",
                 description = getString(R.string.desc_onboard_collab),
                 imageRes = R.drawable.img_board_collab
             ),
             OnboardingItem(
+                title = "Learning Together",
                 description = getString(R.string.desc_onboard_learning),
                 imageRes = R.drawable.img_board_learning
             )

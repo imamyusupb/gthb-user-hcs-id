@@ -19,6 +19,7 @@ class OnboardingAdapter(
                 imageOnboarding.load(item.imageRes) {
                     crossfade(true)
                 }
+                tvTitle.text = item.title
                 tvDescription.text = item.description
             }
         }
