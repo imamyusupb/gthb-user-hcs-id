@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hcs.findmedev.MainActivity
 import com.hcs.findmedev.databinding.ActivitySplashScreenBinding
 
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -21,6 +25,15 @@ class SplashScreenActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // ✅ Atur padding agar tidak ketimpa navigation bar
+        ViewCompat.setOnApplyWindowInsetsListener(binding.textView2) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(bottom = systemBars.bottom)
+            insets
+        }
+
+        binding.lottieImg.speed = 1f
 
         Handler(Looper.getMainLooper()).postDelayed({
             navigateToMain()

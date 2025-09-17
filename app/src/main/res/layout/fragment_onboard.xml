@@ -26,9 +26,9 @@
         app:dotsColor="@color/gray_500"
         app:dotsSize="8dp"
         app:dotsSpacing="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonNext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonNext"
         app:layout_constraintStart_toStartOf="@+id/parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonNext"
         app:selectedDotColor="@color/black" />
 
     <com.google.android.material.button.MaterialButton
