@@ -46,6 +46,8 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.lottie)
     implementation(libs.com.google.android.material.material)
+    implementation(libs.viewpager2)
+    implementation(libs.viewpager.indicator)
     //    #DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
@@ -67,4 +69,5 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.livedata.ktx)
+    implementation(project(":core"))
 }

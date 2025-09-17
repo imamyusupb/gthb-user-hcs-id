@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Brand Colors (Material 3 Style) -->
+    <color name="colorPrimary">#6750A4</color>
+    <color name="colorPrimaryContainer">#EADDFF</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+
+    <color name="colorSecondary">#625B71</color>
+    <color name="colorSecondaryContainer">#E8DEF8</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+
+    <color name="colorTertiary">#7D5260</color>
+    <color name="colorTertiaryContainer">#FFD8E4</color>
+    <color name="colorOnTertiary">#FFFFFF</color>
+
+    <!--  Neutral / Surface Colors -->
+    <color name="colorSurface">#FFFBFE</color>
+    <color name="colorOnSurface">#1C1B1F</color>
+    <color name="colorBackground">#FFFBFE</color>
+    <color name="colorOnBackground">#1C1B1F</color>
+
+    <!-- ✅State Colors -->
+    <color name="colorSuccess">#4CAF50</color>
+    <color name="colorWarning">#FFC107</color>
+    <color name="colorError">#F44336</color>
+    <color name="colorInfo">#2196F3</color>
+
+    <!--  Neutral Shades (useful for divider, placeholder, textSecondary) -->
+    <color name="gray_50">#FAFAFA</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_700">#616161</color>
+    <color name="gray_800">#424242</color>
+    <color name="gray_900">#212121</color>
+
+    <!-- Accent Colors (Bagus untuk Button CTA, Highlight) -->
+    <color name="accentBlue">#2979FF</color>
+    <color name="accentGreen">#00C853</color>
+    <color name="accentOrange">#FF9800</color>
+    <color name="accentPink">#FF4081</color>
+    <color name="accentPurple">#7C4DFF</color>
+
+    <!-- 🔵 Indicator & Chip Colors -->
+    <color name="indicator_selected">#2979FF</color>
+    <color name="indicator_unselected">#BDBDBD</color>
+
+</resources>

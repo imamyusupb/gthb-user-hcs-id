@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/app_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_graph"
+    app:startDestination="@id/onboardFragment">
 
+    <fragment
+        android:id="@+id/onboardFragment"
+        android:name="com.hcs.findmedev.presentation.onboard.OnboardFragment"
+        android:label="OnboardFragment" />
+    <fragment
+        android:id="@+id/detailUserFragment"
+        android:name="com.hcs.findmedev.presentation.detail.DetailUserFragment"
+        android:label="fragment_detail_user"
+        tools:layout="@layout/fragment_detail_user" />
+    <fragment
+        android:id="@+id/searchUserFragment"
+        android:name="com.hcs.findmedev.presentation.search.SearchUserFragment"
+        android:label="fragment_search_user"
+        tools:layout="@layout/fragment_search_user" />
 </navigation>
