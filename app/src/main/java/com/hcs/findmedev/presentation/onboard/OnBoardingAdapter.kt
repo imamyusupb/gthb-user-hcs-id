@@ -3,6 +3,8 @@ package com.hcs.findmedev.presentation.onboard
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.hcs.findmedev.R
 import com.hcs.findmedev.databinding.ItemOnboardingBinding
 
 class OnboardingAdapter(
@@ -13,8 +15,12 @@ class OnboardingAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: OnboardingItem) {
-            binding.imageOnboarding.setImageResource(item.imageRes)
-            binding.tvDescription.text = item.description
+            binding.apply {
+                imageOnboarding.load(item.imageRes) {
+                    crossfade(true)
+                }
+                tvDescription.text = item.description
+            }
         }
     }
 

@@ -31,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.com.google.android.material.material)
     implementation(libs.viewpager2)
     implementation(libs.viewpager.indicator)
+    implementation(libs.coil)
     //    #DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
@@ -69,5 +70,6 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.javapoet)
     implementation(project(":core"))
 }
