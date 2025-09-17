@@ -15,13 +15,8 @@ class OnboardingAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: OnboardingItem) {
-            binding.apply {
-                imageOnboarding.load(item.imageRes) {
-                    crossfade(true)
-                }
-                tvTitle.text = item.title
-                tvDescription.text = item.description
-            }
+            binding.imageOnboarding.setImageResource(item.imageRes)
+            binding.tvDescription.text = item.description
         }
     }
 
