@@ -63,17 +63,17 @@ class OnboardFragment : Fragment() {
     private fun setDataOnboard(): List<OnboardingItem> {
         return listOf(
             OnboardingItem(
-                title = "Portfolio",
+                title = getString(R.string.portfolio),
                 description = getString(R.string.desc_onboard_porto),
                 imageRes = R.drawable.img_board_porto
             ),
             OnboardingItem(
-                title = "Collaboration",
+                title = getString(R.string.collaboration),
                 description = getString(R.string.desc_onboard_collab),
                 imageRes = R.drawable.img_board_collab
             ),
             OnboardingItem(
-                title = "Learning Together",
+                title = getString(R.string.learning_together),
                 description = getString(R.string.desc_onboard_learning),
                 imageRes = R.drawable.img_board_learning
             )

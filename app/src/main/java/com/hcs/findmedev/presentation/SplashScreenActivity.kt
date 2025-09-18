@@ -7,17 +7,16 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.hcs.findmedev.MainActivity
-import com.hcs.findmedev.databinding.ActivitySplashScreenBinding
-
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import com.hcs.core.R
+import com.hcs.findmedev.MainActivity
+import com.hcs.findmedev.databinding.ActivitySplashScreenBinding
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
@@ -73,14 +72,14 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun showPermissionRequiredDialog() {
         AlertDialog.Builder(this)
-            .setTitle("Permission Required")
-            .setMessage("Aplikasi membutuhkan izin notifikasi agar fitur berjalan dengan baik. Silakan izinkan.")
+            .setTitle(getString(R.string.permission_required))
+            .setMessage(getString(R.string.aplikasi_membutuhkan_izin_notifikasi_agar_fitur_berjalan_dengan_baik_silakan_izinkan))
             .setCancelable(false) // Tidak bisa di-cancel
-            .setPositiveButton("Izinkan") { _, _ ->
+            .setPositiveButton(getString(R.string.izinkan)) { _, _ ->
                 // Request lagi
                 notificationPermissionRequest.launch(android.Manifest.permission.POST_NOTIFICATIONS)
             }
-            .setNegativeButton("Keluar") { _, _ ->
+            .setNegativeButton(getString(R.string.keluar)) { _, _ ->
                 finish()
             }
             .show()

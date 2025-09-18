@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.hcs.findmedev.R
 import com.hcs.findmedev.databinding.ItemOnboardingBinding
 
 class OnboardingAdapter(

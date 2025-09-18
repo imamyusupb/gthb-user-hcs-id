@@ -15,15 +15,11 @@ interface GithubApiService {
 
     @GET("users/{username}/followers")
     suspend fun getFollowers(
-        @Path("username") username: String,
-        @Query("per_page") perPage: Int = 30,
-        @Query("page") page: Int = 1
+        @Path("username") username: String, @Query("per_page") perPage: Int = 30, @Query("page") page: Int = 1
     ): List<GithubUserDto>
 
     @GET("users/{username}/following")
     suspend fun getFollowing(
-        @Path("username") username: String,
-        @Query("per_page") perPage: Int = 30,
-        @Query("page") page: Int = 1
+        @Path("username") username: String, @Query("per_page") perPage: Int = 30, @Query("page") page: Int = 1
     ): List<GithubUserDto>
 }

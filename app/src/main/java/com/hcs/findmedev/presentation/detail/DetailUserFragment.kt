@@ -13,7 +13,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.google.android.material.tabs.TabLayoutMediator
-import com.hcs.findmedev.R
 import com.hcs.findmedev.databinding.FragmentDetailUserBinding
 import com.hcs.findmedev.domain.model.GithubUserDetail
 import dagger.hilt.android.AndroidEntryPoint

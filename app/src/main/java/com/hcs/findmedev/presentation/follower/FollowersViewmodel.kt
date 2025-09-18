@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hcs.findmedev.domain.model.GithubUser
 import com.hcs.findmedev.domain.usecase.GetFollowersUseCase
-import com.hcs.findmedev.domain.usecase.GetFollowingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -3,10 +3,8 @@ package com.hcs.findmedev.presentation.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.Coil
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.hcs.findmedev.R
 import com.hcs.findmedev.databinding.ItemUsersBinding
 import com.hcs.findmedev.domain.model.GithubUser
 

@@ -7,9 +7,7 @@ import com.hcs.findmedev.domain.model.GithubUserDetail
 
 fun GithubUserDto.toDomain(): GithubUser {
     return GithubUser(
-        username = login,
-        avatarUrl = avatarUrl,
-        url = url
+        username = login, avatarUrl = avatarUrl, url = url
     )
 }
 

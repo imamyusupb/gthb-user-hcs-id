@@ -15,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hcs.findmedev.R
 import com.hcs.findmedev.databinding.FollowingFragmentBinding
-import com.hcs.findmedev.presentation.search.SearchUserAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

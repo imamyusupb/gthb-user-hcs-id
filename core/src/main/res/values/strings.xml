@@ -3,4 +3,11 @@
     <string name="desc_onboard_collab">Work together with developers from all over the world. Contribute to open-source projects, review pull requests, and share ideas through issues and discussions. GitHub makes it easy to collaborate, manage code versions, and grow your teamwork skills.</string>
     <string name="desc_onboard_learning">Explore millions of public repositories to learn new coding techniques and best practices. Fork projects, read source code, and stay up-to-date with the latest tools and frameworks. GitHub is one of the best places to keep improving your skills as a developer.</string>
     <string name="start">Start</string>
+    <string name="permission_required">Permission Required</string>
+    <string name="aplikasi_membutuhkan_izin_notifikasi_agar_fitur_berjalan_dengan_baik_silakan_izinkan">Aplikasi membutuhkan izin notifikasi agar fitur berjalan dengan baik. Silakan izinkan.</string>
+    <string name="izinkan">Izinkan</string>
+    <string name="keluar">Keluar</string>
+    <string name="portfolio">Portfolio</string>
+    <string name="collaboration">Collaboration</string>
+    <string name="learning_together">Learning Together</string>
 </resources>
