@@ -19,4 +19,12 @@ class GithubRepositoryImpl @Inject constructor(
     override suspend fun getUserDetail(username: String): GithubUserDetail {
         return api.getUserDetail(username).toDomain()
     }
+
+    override suspend fun getFollowers(username: String, perPage: Int, page: Int): List<GithubUser> {
+        return api.getFollowers(username).map { it.toDomain() }
+    }
+
+    override suspend fun getFollowing(username: String, perPage: Int, page: Int): List<GithubUser> {
+        return api.getFollowing(username).map { it.toDomain() }
+    }
 }

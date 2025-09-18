@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.google.android.material.tabs.TabLayoutMediator
 import com.hcs.findmedev.R
 import com.hcs.findmedev.databinding.FragmentDetailUserBinding
 import com.hcs.findmedev.domain.model.GithubUserDetail
@@ -43,6 +44,13 @@ class DetailUserFragment : Fragment() {
 
         setupObserver()
         setupListener()
+
+        val pagerAdapter = FollowersFollowingPagerAdapter(this, username)
+        binding.viewPager.adapter = pagerAdapter
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = if (position == 0) "Followers" else "Following"
+        }.attach()
     }
 
     private fun setupObserver() {

@@ -35,7 +35,7 @@ class SearchUserAdapter(
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = users[position]
         holder.binding.tvUsername.text = user.username
-
+        holder.binding.tvReposInfo.text = user.url
         holder.binding.ivAvatar.load(user.avatarUrl) {
             placeholder(com.hcs.core.R.drawable.image_placeholder)
             error(com.hcs.core.R.drawable.failed_placeholder)

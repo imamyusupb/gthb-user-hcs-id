@@ -28,3 +28,4 @@ fun UserDetailResponse.toDomain(): GithubUserDetail {
         followerCount = followers
     )
 }
+
