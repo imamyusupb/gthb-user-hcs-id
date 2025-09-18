@@ -2,11 +2,15 @@ package com.hcs.findmedev.presentation
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.hcs.findmedev.MainActivity
 import com.hcs.findmedev.databinding.ActivitySplashScreenBinding
@@ -20,13 +24,22 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashScreenBinding
 
+    private val notificationPermissionRequest =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+            if (granted) {
+                startMainAfterDelay()
+            } else {
+                // Kalau user menolak, tetap stuck di splash atau kasih pesan
+                showPermissionRequiredDialog()
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // ✅ Atur padding agar tidak ketimpa navigation bar
         ViewCompat.setOnApplyWindowInsetsListener(binding.textView2) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.updatePadding(bottom = systemBars.bottom)
@@ -35,9 +48,42 @@ class SplashScreenActivity : AppCompatActivity() {
 
         binding.lottieImg.speed = 1f
 
+        requestNotificationPermissionIfNeeded()
+    }
+
+    private fun requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                notificationPermissionRequest.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+            } else {
+                startMainAfterDelay()
+            }
+        } else {
+            startMainAfterDelay()
+        }
+    }
+
+    private fun startMainAfterDelay() {
         Handler(Looper.getMainLooper()).postDelayed({
             navigateToMain()
         }, 4000)
+    }
+
+    private fun showPermissionRequiredDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Permission Required")
+            .setMessage("Aplikasi membutuhkan izin notifikasi agar fitur berjalan dengan baik. Silakan izinkan.")
+            .setCancelable(false) // Tidak bisa di-cancel
+            .setPositiveButton("Izinkan") { _, _ ->
+                // Request lagi
+                notificationPermissionRequest.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+            }
+            .setNegativeButton("Keluar") { _, _ ->
+                finish()
+            }
+            .show()
     }
 
     private fun navigateToMain() {

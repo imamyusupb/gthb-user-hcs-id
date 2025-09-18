@@ -1,8 +1,9 @@
 package com.hcs.findmedev.data.repository
 
-import com.hcs.findmedev.data.mapper.UserMapper
+import com.hcs.findmedev.data.mapper.toDomain
 import com.hcs.findmedev.data.remote.GithubApiService
 import com.hcs.findmedev.domain.model.GithubUser
+import com.hcs.findmedev.domain.model.GithubUserDetail
 import com.hcs.findmedev.domain.repository.GithubRepository
 import javax.inject.Inject
 
@@ -12,6 +13,10 @@ class GithubRepositoryImpl @Inject constructor(
     override suspend fun searchUsers(query: String): List<GithubUser> {
         val response = api.searchUsers(query)
 
-        return response.items.map { UserMapper().run { it.toDomain() } }
+        return response.items.map { it.toDomain() }
+    }
+
+    override suspend fun getUserDetail(username: String): GithubUserDetail {
+        return api.getUserDetail(username).toDomain()
     }
 }

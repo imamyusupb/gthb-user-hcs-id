@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hcs.findmedev.R
 import com.hcs.findmedev.databinding.FragmentSearchUserBinding
@@ -18,7 +20,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-
 class SearchUserFragment : Fragment() {
 
     private var _binding: FragmentSearchUserBinding? = null
@@ -52,7 +53,11 @@ class SearchUserFragment : Fragment() {
 
     private fun setupRecyclerView() {
         adapter = SearchUserAdapter(emptyList()) { user ->
-            Toast.makeText(requireContext(), "Clicked ${user.username}", Toast.LENGTH_SHORT).show()
+            val bundle = bundleOf("username" to user.username)
+            findNavController().navigate(
+                R.id.action_searchUserFragment_to_detailUserFragment,
+                bundle
+            )
         }
         binding.rvUsers.adapter = adapter
         binding.rvUsers.layoutManager = LinearLayoutManager(requireContext())

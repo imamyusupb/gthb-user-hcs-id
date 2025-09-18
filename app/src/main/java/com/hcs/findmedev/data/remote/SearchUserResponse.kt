@@ -9,5 +9,6 @@ data class SearchUserResponse(
 
 data class GithubUserDto(
     @Json(name = "login") val login: String,
-    @Json(name = "avatar_url") val avatarUrl: String
+    @Json(name = "avatar_url") val avatarUrl: String,
+    val url :String
 )

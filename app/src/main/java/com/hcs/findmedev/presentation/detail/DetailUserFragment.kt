@@ -1,60 +1,107 @@
 package com.hcs.findmedev.presentation.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.hcs.findmedev.R
+import com.hcs.findmedev.databinding.FragmentDetailUserBinding
+import com.hcs.findmedev.domain.model.GithubUserDetail
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailUserFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class DetailUserFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentDetailUserBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: DetailUserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_user, container, false)
+    ): View {
+        _binding = FragmentDetailUserBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailUserFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailUserFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val username = arguments?.getString("username") ?: return
+        viewModel.loadUserDetail(username)
+
+        setupObserver()
+        setupListener()
+    }
+
+    private fun setupObserver() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.userDetail.collect { user ->
+                        user?.let { showUserDetail(it) }
+                    }
+                }
+
+                launch {
+                    viewModel.loading.collect { isLoading ->
+                        binding.root.isEnabled = !isLoading
+                    }
+                }
+
+                launch {
+                    viewModel.error.collect { errorMessage ->
+                        if (errorMessage != null) {
+                            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
+        }
+    }
+
+    private fun setupListener() {
+        binding.btnBack.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+    }
+
+    private fun showUserDetail(user: GithubUserDetail) {
+        binding.apply {
+            tvName.text = user.name ?: "(No Name)"
+            tvUsername.text = "@${user.username}"
+            tvBio.text = user.bio ?: "Computer Science Student, currently dwelling on android development."
+            tvCompany.text = user.company ?: "(Company not set)"
+            tvLocation.text = user.location ?: "(Location not set)"
+            tvBlog.text = user.blog ?: "(Blog not set)"
+
+            tvRepos.text = "${user.repositoryCount}\nrepository"
+            tvGists.text = "${user.gistCount}\ngist"
+            tvFollowing.text = "${user.followingCount}\nfollowing"
+            tvFollowers.text = "${user.followerCount}\nfollower"
+
+            ivAvatar.load(user.avatarUrl) {
+                placeholder(com.hcs.core.R.drawable.image_placeholder)
+                error(com.hcs.core.R.drawable.failed_placeholder)
+                crossfade(true)
+                transformations(CircleCropTransformation())
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
